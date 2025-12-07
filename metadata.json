@@ -1,0 +1,5 @@
+{
+  "name": "Gemini Image Generator",
+  "description": "An AI-powered application that generates images from text descriptions using the Gemini Flash Image model.",
+  "requestFramePermissions": []
+}
