@@ -67,7 +67,24 @@ const ImageGenerator: React.FC = () => {
               {isLoading ? <><Spinner /> Generating...</> : 'Generate Image'}
             </button>
 
-            {error && <div className="text-red-400 bg-red-900/50 border border-red-700 p-3 rounded-lg text-center">{error}</div>}
+            {error && (
+              <div className="text-red-400 bg-red-900/50 border border-red-700 p-4 rounded-lg text-center">
+                <p className="font-semibold">Oops! Something went wrong.</p>
+                <p className="text-sm mt-1">{error}</p>
+                {error.includes("free request limit") && (
+                  <p className="mt-2 text-sm">
+                    <a
+                      href="https://ai.google.dev/gemini-api/docs/billing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-red-300"
+                    >
+                      Learn more about API quotas and billing.
+                    </a>
+                  </p>
+                )}
+              </div>
+            )}
           </div>
         </main>
         

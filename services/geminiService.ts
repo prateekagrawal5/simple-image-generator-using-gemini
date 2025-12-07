@@ -29,6 +29,9 @@ export const generateImage = async (prompt: string): Promise<string> => {
   } catch (error) {
     console.error("Error generating image:", error);
     if (error instanceof Error) {
+       if (error.message.includes("429") || error.message.includes("RESOURCE_EXHAUSTED")) {
+            throw new Error("You've exceeded the free request limit. Please try again later. For higher limits, you can add a billing account to your Google Cloud project.");
+       }
        throw new Error(`Failed to generate image: ${error.message}`);
     }
     throw new Error("An unknown error occurred while generating the image.");
