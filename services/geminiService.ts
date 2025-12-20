@@ -2,7 +2,8 @@ import { GoogleGenAI } from "@google/genai";
 
 export const generateImage = async (prompt: string): Promise<string> => {
   // The API key is injected by Vite's define config from the VITE_API_KEY environment variable
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = new GoogleGenAI({ apiKey: process.env.VITE_API_KEY });
+  console.log("Using API Key:", process.env.VITE_API_KEY);
   
   try {
     const response = await ai.models.generateContent({
